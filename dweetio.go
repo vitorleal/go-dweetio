@@ -27,7 +27,7 @@ type Dweets struct {
 }
 
 ///Get last dweet for a Thing
-func (api *Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
+func (api Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
   uri := fmt.Sprintf("%s/get/latest/dweet/for/%s", BaseUrl, thing)
   resp, err := http.Get(uri)
 
@@ -54,7 +54,7 @@ func (api *Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
 }
 
 ///Get all dweet for a Thing
-func (api *Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
+func (api Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
   uri := fmt.Sprintf("%s/get/dweets/for/%s", BaseUrl, thing)
   resp, err := http.Get(uri)
 
