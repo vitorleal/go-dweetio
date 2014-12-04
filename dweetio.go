@@ -12,25 +12,26 @@ const (
 )
 
 type Dweetio struct {
-	Key string
+  Key string
 }
 
 type Dweets struct {
 	This string
-	By string
-	The string
+	By   string
+	The  string
 	With []struct {
-		Thing string
+		Thing   string
 		Created string
 		Content map[string]interface{}
 	}
 }
 
-func (api Dweetio) ReadData(resp *http.Response) (dweets *Dweets) {
+//Read data from request body
+func (api *Dweetio) ReadData(resp *http.Response) (dweets *Dweets) {
   //Read the response body
   body, err := ioutil.ReadAll(resp.Body)
 
-  //If not error
+  //If error
   if err != nil {
     fmt.Println(err)
   }
@@ -43,32 +44,33 @@ func (api Dweetio) ReadData(resp *http.Response) (dweets *Dweets) {
 	return dweets
 }
 
-///Get last dweet for a Thing
-func (api Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
+
+//Get last dweet for a Thing
+func (api *Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
   uri := fmt.Sprintf("%s/get/latest/dweet/for/%s", BaseUrl, thing)
   resp, err := http.Get(uri)
+  defer resp.Body.Close()
 
+  //If error
   if err != nil {
     return nil, err
   }
-
-  defer resp.Body.Close()
 
   dweets = api.ReadData(resp)
 
 	return dweets, nil
 }
 
-///Get all dweet for a Thing
-func (api Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
+//Get all dweet for a Thing
+func (api *Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
   uri := fmt.Sprintf("%s/get/dweets/for/%s", BaseUrl, thing)
   resp, err := http.Get(uri)
+  defer resp.Body.Close()
 
+  //If error
   if err != nil {
     return nil, err
   }
-
-  defer resp.Body.Close()
 
   dweets = api.ReadData(resp)
 
@@ -79,7 +81,7 @@ func (api Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
 //Main func
 func main() {
 	api := Dweetio{}
-	res, err := api.GetLastDweetFor("vitorleal")
+	res, err := api.GetDweetsFor("vitorleal")
 
   if err != nil {
     fmt.Println(err)
