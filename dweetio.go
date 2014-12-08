@@ -11,6 +11,11 @@ const (
   BaseUrl = "https://dweet.io"
 )
 
+//Return the current implementation version
+func Version() string {
+  return "0.1.0"
+}
+
 type Dweetio struct {
   Key string
 }
