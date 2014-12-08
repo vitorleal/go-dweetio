@@ -1,9 +1,7 @@
-package main
+package dweetio
 
 import (
   "net/http"
-  "io/ioutil"
-  "encoding/json"
   "fmt"
 )
 
@@ -29,24 +27,6 @@ type Dweets struct {
 		Created string
 		Content map[string]interface{}
 	}
-}
-
-//Read data from request body
-func (api *Dweetio) ReadData(resp *http.Response) (dweets *Dweets) {
-  //Read the response body
-  body, err := ioutil.ReadAll(resp.Body)
-
-  //If error
-  if err != nil {
-    fmt.Println(err)
-  }
-
-  //Unmarshal the request body
-  if err := json.Unmarshal(body, &dweets); err != nil {
-	  fmt.Println(err)
-  }
-
-	return dweets
 }
 
 
@@ -82,15 +62,3 @@ func (api *Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
 	return dweets, nil
 }
 
-
-//Main func
-func main() {
-	api := Dweetio{}
-	res, err := api.GetDweetsFor("vitorleal")
-
-  if err != nil {
-    fmt.Println(err)
-	}
-
-	fmt.Println(res)
-}
