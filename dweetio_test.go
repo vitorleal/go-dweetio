@@ -7,10 +7,10 @@ import(
 
 func TestSet(t *testing.T) {
 	api := Dweetio{}
-	res, err := api.GetDweetsFor("vitorleal")
+	res, err := api.GetDweetsFor("vitorlea")
 
 	if err != nil {
-	  fmt.Println(err)
+	  fmt.Println(err.Error())
   }
 
 	fmt.Println(res)
