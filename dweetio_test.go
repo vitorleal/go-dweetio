@@ -11,9 +11,11 @@ func TestSet(t *testing.T) {
 	res2, err2 := api.GetDweetsFor("vitorleal")
 
 	if err != nil {
+		t.Error("Error in the GetDweetsFor with an non existent thing")
 		fmt.Println(err.Error())
 	}
 	if err2 != nil {
+		t.Error("Error in the GetDweetsFor with existent thing")
 		fmt.Println(err2.Error())
 	}
 
