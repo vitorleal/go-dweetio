@@ -5,20 +5,38 @@ import (
 	"testing"
 )
 
-func TestSet(t *testing.T) {
+func TestDweetFor(t *testing.T) {
 	api := Dweetio{}
-	res, err := api.GetDweetsFor("dontExist")
-	res2, err2 := api.GetDweetsFor("vitorleal")
+	res, err := api.DweetFor("vitorleal", "{ \"lorem\": \"ipsum\" }") // Note: doesn't hit network
 
 	if err != nil {
-		t.Error("Error in the GetDweetsFor with an non existent thing")
+		t.Error("Error in the DweetsFor")
 		fmt.Println(err.Error())
-	}
-	if err2 != nil {
-		t.Error("Error in the GetDweetsFor with existent thing")
-		fmt.Println(err2.Error())
 	}
 
 	fmt.Println(res)
-	fmt.Println(res2)
+}
+
+func TestGetDweets(t *testing.T) {
+	api := Dweetio{}
+	res, err := api.GetDweetsFor("godweetio") // Note: doesn't hit network
+
+	if err != nil {
+		t.Error("Error in the GetDweetsFor")
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(res)
+}
+
+func TestGetLastDweetFor(t *testing.T) {
+	api := Dweetio{}
+	res, err := api.GetLastDweetFor("godweetio") // Note: doesn't hit network
+
+	if err != nil {
+		t.Error("Error in the GetLastDweetFor")
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(res)
 }
