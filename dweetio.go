@@ -1,13 +1,8 @@
 package dweetio
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
-)
-
-const (
-	BaseUrl = "https://dweet.io"
 )
 
 //Return the current implementation version
@@ -22,7 +17,7 @@ type Dweetio struct {
 
 //GET last dweet for a Thing
 func (api *Dweetio) GetLastDweetFor(thing string) (dweets interface{}, err error) {
-	uri := fmt.Sprintf("%s/get/latest/dweet/for/%s", BaseUrl, thing)
+	uri := api.GetUri("/get/latest/dweet/for/", thing)
 	res, err := http.Get(uri)
 
 	//If error
@@ -38,7 +33,8 @@ func (api *Dweetio) GetLastDweetFor(thing string) (dweets interface{}, err error
 
 //GET all dweet for a Thing
 func (api *Dweetio) GetDweetsFor(thing string) (dweets interface{}, err error) {
-	uri := fmt.Sprintf("%s/get/dweets/for/%s", BaseUrl, thing)
+	uri := api.GetUri("/get/dweets/for/", thing)
+
 	res, err := http.Get(uri)
 
 	//If error
@@ -54,17 +50,15 @@ func (api *Dweetio) GetDweetsFor(thing string) (dweets interface{}, err error) {
 
 //POST data to a Thing
 func (api *Dweetio) DweetFor(thing string, data string) (dweet interface{}, err error) {
-	uri := fmt.Sprintf("%s/dweet/for/%s", BaseUrl, thing)
+	uri := api.GetUri("/dweet/for/", thing)
 	json := strings.NewReader(data)
 
 	res, err := http.Post(uri, "application/json", json)
 
-	defer res.Body.Close()
-
-	dweet, err = api.ReadData(res)
-
 	//If error
 	api.ReturnError(err)
+
+	dweet, err = api.ReadData(res)
 
 	return dweet, nil
 }

@@ -2,8 +2,14 @@ package dweetio
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+)
+
+const (
+	BaseUri = "https://dweet.io"
 )
 
 //Read data from request body
@@ -32,4 +38,18 @@ func (api *Dweetio) ReturnError(err error) (dweets interface{}, e error) {
 	}
 
 	return
+}
+
+//Return the dweetio uri with the lock key if is set
+func (api *Dweetio) GetUri(uri string, thing string) (dweetUri string) {
+	dweetUri = fmt.Sprintf("%s%s%s", BaseUri, uri, thing)
+
+	if api.Key != "" {
+		params := url.Values{}
+		params.Add("key", api.Key)
+		dweetUri = fmt.Sprintf("%s?%s", dweetUri, params.Encode())
+	}
+	fmt.Println(dweetUri)
+
+	return dweetUri
 }
