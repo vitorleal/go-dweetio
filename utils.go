@@ -49,7 +49,6 @@ func (api *Dweetio) GetUri(uri string, thing string) (dweetUri string) {
 		params.Add("key", api.Key)
 		dweetUri = fmt.Sprintf("%s?%s", dweetUri, params.Encode())
 	}
-	fmt.Println(dweetUri)
 
 	return dweetUri
 }

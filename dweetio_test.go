@@ -7,7 +7,19 @@ import (
 
 func TestDweetFor(t *testing.T) {
 	api := Dweetio{}
-	res, err := api.DweetFor("vitorleal", "{ \"lorem\": \"ipsum\" }") // Note: doesn't hit network
+	res, err := api.DweetFor("godweetio", "{ \"lorem\": \"ipsum\" }") // Note: doesn't hit network
+
+	if err != nil {
+		t.Error("Error in the DweetsFor")
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(res)
+}
+
+func TestDweetForWithKey(t *testing.T) {
+	api := Dweetio{Key: "myLockKey"}
+	res, err := api.DweetFor("godweetio", "{ \"lorem\": \"ipsum\" }") // Note: doesn't hit network
 
 	if err != nil {
 		t.Error("Error in the DweetsFor")
