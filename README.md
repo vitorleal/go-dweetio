@@ -136,7 +136,7 @@ func main() {
 
 ##Supporting
 * Get last dweet for a **thing**
-* Get last dweet for a LOCEKD **thing**
+* Get last dweet for a LOCKED **thing**
 * Get all dweets for a **thing**
 * Get all dweets for a LOCKED **thing**
 * Post new data for a **thing**
