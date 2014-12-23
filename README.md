@@ -1,16 +1,15 @@
-#GO Dweetio
+#GO Dweet.io
+Go-dweetio is a simple Go client for [dweet.io](https://dweet.io/) API
 
-Go-dweetio is a simple Go client for [dweetio](https://dweet.io/)
 
 ##Instaling
 ```
 $ go get github.com/vitorleal/go-dweetio
 ```
 
-
 ##Using
 
-###GET last dweet for a *thing* [Dweet.IO API](https://dweet.io/play/#!/dweets)
+###GET last dweet for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -30,7 +29,8 @@ func main() {
 }
 ```
 
-###GET last dweet for a LOCKED *thing* [Dweet.IO API](https://dweet.io/play/#!/dweets)
+
+###GET last dweet for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -51,7 +51,7 @@ func main() {
 ```
 
 
-###GET all dweet for a *thing* - limited to 500 in the [Dweet.IO API](https://dweet.io/play/#!/dweets)
+###GET all dweet for a *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -72,7 +72,7 @@ func main() {
 ```
 
 
-###GET all dweet for a LOCKED *thing* - limited to 500 in the [Dweet.IO API](https://dweet.io/play/#!/dweets)
+###GET all dweet for a LOCKED *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -93,7 +93,7 @@ func main() {
 ```
 
 
-###POST a new data for a *thing* [Dweet.IO API](https://dweet.io/play/#!/dweets)
+###POST a new data for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -114,7 +114,7 @@ func main() {
 ```
 
 
-###POST a new data for a LOCKED *thing* [Dweet.IO API](https://dweet.io/play/#!/dweets)
+###POST a new data for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -133,6 +133,7 @@ func main() {
 	fmt.Println(res)
 }
 ```
+
 
 ##Supporting
 * Get last dweet for a **thing**
@@ -144,6 +145,7 @@ func main() {
 
 
 ##Autor
-| [![twitter/vitorleal](http://gravatar.com/avatar/e133221d7fbc0dee159dca127d2f6f00?s=80)](http://twitter.com/vitorleal "Follow @vitorleal on Twitter") |
+|[![twitter/vitorleal](http://gravatar.com/avatar/e133221d7fbc0dee159dca127d2f6f00?s=80)](http://twitter.com/vitorleal "Follow @vitorleal on Twitter")|
 |---|
-| [Vitor Leal](http://vitorleal.com) |
+|[Vitor Leal](http://vitorleal.com)|
+
