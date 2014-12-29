@@ -1,4 +1,4 @@
-#GO Dweet.io
+#GO Dweet.io [![Build Status](https://travis-ci.org/vitorleal/go-dweetio.svg)](https://travis-ci.org/vitorleal/go-dweetio)
 Go-dweetio is a simple Go client for [dweet.io](https://dweet.io/) API
 
 
