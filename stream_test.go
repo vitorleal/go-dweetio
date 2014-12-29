@@ -1,10 +1,10 @@
 package dweetio
 
-import (
-	"testing"
-)
+//import (
+//	"testing"
+//)
 
-func TestListenForDweetsFrom(t *testing.T) {
-	api := Dweetio{}
-	api.ListenForDweetsFrom("godweetio") // Note: doesn't hit network
-}
+//func TestListenForDweetsFrom(t *testing.T) {
+//	api := Dweetio{}
+//	api.ListenForDweetsFrom("godweetio") // Note: doesn't hit network
+//}
