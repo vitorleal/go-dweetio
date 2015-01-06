@@ -7,6 +7,19 @@ Go-dweetio is a simple Go client for [dweet.io](https://dweet.io/) API
 $ go get github.com/vitorleal/go-dweetio
 ```
 
+##API Support
+* Get last dweet for a **thing**
+* Get last dweet for a LOCKED **thing**
+* Get all dweets for a **thing**
+* Get all dweets for a LOCKED **thing**
+* Post new data for a **thing**
+* Post new data for a LOCKED **thing**
+* Set alert for a LOCKED **thing**
+* Get alert for a LOCKED **thing**
+* Remove alert for a LOCKED **thing**
+* **TODO**: Real-time Streams for a **thing**
+
+
 ##Using
 
 ###GET last dweet for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
@@ -199,18 +212,6 @@ func main() {
 	fmt.Println(res)
 }
 ```
-
-
-##Supporting
-* Get last dweet for a **thing**
-* Get last dweet for a LOCKED **thing**
-* Get all dweets for a **thing**
-* Get all dweets for a LOCKED **thing**
-* Post new data for a **thing**
-* Post new data for a LOCKED **thing**
-* Set alert for a LOCKED **thing**
-* Get alert for a LOCKED **thing**
-* Remove alert for a LOCKED **thing**
 
 
 ##Autor
