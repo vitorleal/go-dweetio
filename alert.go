@@ -12,7 +12,6 @@ func (api *Dweetio) GetAlertFor(thing string) (dweets interface{}, err error) {
 	}
 
 	uri := api.GetUri("/get/alert/for/", thing)
-	fmt.Println(uri)
 
 	res, err := http.Get(uri)
 
@@ -34,7 +33,6 @@ func (api *Dweetio) RemoveAlertFor(thing string) (dweets interface{}, err error)
 	}
 
 	uri := api.GetUri("/remove/alert/for/", thing)
-	fmt.Println(uri)
 
 	res, err := http.Get(uri)
 
@@ -56,7 +54,6 @@ func (api *Dweetio) SetAlertFor(thing string, recipients string, condition strin
 	}
 
 	uri := api.GetAlertUri(recipients, thing, condition)
-	fmt.Println(uri)
 
 	res, err := http.Get(uri)
 
