@@ -52,3 +52,17 @@ func (api *Dweetio) GetUri(uri string, thing string) (dweetUri string) {
 
 	return dweetUri
 }
+
+//Return the dweetio alert uri with the lock key if is set
+func (api *Dweetio) GetAlertUri(recipients string, thing string, condition string) (dweetUri string) {
+	conditionEncoded := url.QueryEscape(condition)
+	dweetUri = fmt.Sprintf("%s/alert/%s/when/%s/%s", BaseUri, recipients, thing, conditionEncoded)
+
+	if api.Key != "" {
+		params := url.Values{}
+		params.Add("key", api.Key)
+		dweetUri = fmt.Sprintf("%s?%s", dweetUri, params.Encode())
+	}
+
+	return dweetUri
+}

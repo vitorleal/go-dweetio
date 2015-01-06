@@ -1,24 +1,22 @@
 package dweetio
 
 import (
+	"encoding/json"
 	"fmt"
-	"net"
+	"net/http"
 )
 
-func (api *Dweetio) ListenForDweetsFrom(thing string) {
+func (api *Dweetio) ListenForDweetsFrom(thing string) (dweets interface{}) {
 	uri := api.GetUri("/listen/for/dweets/from/", thing)
+	res, err := http.Get(uri)
 
-	stream, err := net.Listen("tcp", uri)
-
+	//If error
 	api.ReturnError(err)
 
 	for {
-		conn, err := stream.Accept()
+		json.NewDecoder(res.Body).Decode(&dweets)
+		fmt.Println(dweets)
 
-		if err != nil {
-			fmt.Println()
-		}
-
-		fmt.Println(conn)
+		return dweets
 	}
 }
