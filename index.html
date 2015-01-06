@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Go-dweetio by vitorleal</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Go-dweetio</h1>
+        <h2>Go-Dweetio is a simple Go client for the Dweetio API</h2>
+        <a href="https://github.com/vitorleal/go-dweetio" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="go-dweetio-" class="anchor" href="#go-dweetio-" aria-hidden="true"><span class="octicon octicon-link"></span></a>GO Dweet.io <a href="https://travis-ci.org/vitorleal/go-dweetio"><img src="https://travis-ci.org/vitorleal/go-dweetio.svg" alt="Build Status"></a>
+</h1>
+
+<p>Go-dweetio is a simple Go client for <a href="https://dweet.io/">dweet.io</a> API</p>
+
+<h2>
+<a id="instaling" class="anchor" href="#instaling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instaling</h2>
+
+<pre><code>$ go get github.com/vitorleal/go-dweetio
+</code></pre>
+
+<h2>
+<a id="api-support-dweetio-api" class="anchor" href="#api-support-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Support <a href="https://dweet.io">Dweet.io API</a>
+</h2>
+
+<ul>
+<li>Get last dweet for a <strong>thing</strong>
+</li>
+<li>Get last dweet for a LOCKED <strong>thing</strong>
+</li>
+<li>Get all dweets for a <strong>thing</strong>
+</li>
+<li>Get all dweets for a LOCKED <strong>thing</strong>
+</li>
+<li>Post new data for a <strong>thing</strong>
+</li>
+<li>Post new data for a LOCKED <strong>thing</strong>
+</li>
+<li>Set alert for a LOCKED <strong>thing</strong>
+</li>
+<li>Get alert for a LOCKED <strong>thing</strong>
+</li>
+<li>Remove alert for a LOCKED <strong>thing</strong>
+</li>
+<li>
+<strong>TODO</strong>: Real-time Streams for a <strong>thing</strong>
+</li>
+</ul>
+
+<h2>
+<a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using</h2>
+
+<h3>
+<a id="get-last-dweet-for-a-thing-dweetio-api" class="anchor" href="#get-last-dweet-for-a-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET last dweet for a <em>thing</em> <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetLastDweetFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">//Change this value with the name of your thing</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetLastDweetFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="get-last-dweet-for-a-locked-thing-dweetio-api" class="anchor" href="#get-last-dweet-for-a-locked-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET last dweet for a LOCKED <em>thing</em> <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myPrivateLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetLastDweetFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">//Change this value with the name of your thing</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetLastDweetFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="get-all-dweet-for-a-thing---limited-to-500-in-the-dweetio-api" class="anchor" href="#get-all-dweet-for-a-thing---limited-to-500-in-the-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET all dweet for a <em>thing</em> - limited to 500 in the <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetDweetsFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">//Change this value with the name of your thing</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetDweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="get-all-dweet-for-a-locked-thing---limited-to-500-in-the-dweetio-api" class="anchor" href="#get-all-dweet-for-a-locked-thing---limited-to-500-in-the-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET all dweet for a LOCKED <em>thing</em> - limited to 500 in the <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myPrivateLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetDweetsFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">//Change this value with the name of your thing</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetDweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="post-a-new-data-for-a-thing-dweetio-api" class="anchor" href="#post-a-new-data-for-a-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>POST a new data for a <em>thing</em> <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">DweetFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>{ <span class="pl-cce">\"</span>lorem<span class="pl-cce">\"</span>: <span class="pl-cce">\"</span>ipsum<span class="pl-cce">\"</span> }<span class="pl-pds">"</span></span>)
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="post-a-new-data-for-a-locked-thing-dweetio-api" class="anchor" href="#post-a-new-data-for-a-locked-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>POST a new data for a LOCKED <em>thing</em> <a href="https://dweet.io/play/#!/dweets">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myPrivateLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">DweetFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>{ <span class="pl-cce">\"</span>lorem<span class="pl-cce">\"</span>: <span class="pl-cce">\"</span>ipsum<span class="pl-cce">\"</span> }<span class="pl-pds">"</span></span>)
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="set-alert-for-a-locked-thing-dweetio-api" class="anchor" href="#set-alert-for-a-locked-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set alert for a LOCKED <em>thing</em> <a href="https://dweet.io">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-c">//First parmeter thing (name of your thing)</span>
+    <span class="pl-c">//Second parmeter recipients (emails that will be notifyed separated by comma)</span>
+    <span class="pl-c">//Third parmeter condition (A simple javascript expression to evaluate the data in a dweet and to return whether or not an alert should be sent)</span>
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">SetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>vitorleal1@gmail.com<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>if(dweet.alertValue &gt; 10) return 'TEST: Greater than 10'; if(dweet.alertValue &lt; 10) return 'TEST: Less than 10';<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="get-alert-for-a-locked-thing-dweetio-api" class="anchor" href="#get-alert-for-a-locked-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get alert for a LOCKED <em>thing</em> <a href="https://dweet.io">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetAlertFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err)
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h3>
+<a id="remove-alert-for-a-locked-thing-dweetio-api" class="anchor" href="#remove-alert-for-a-locked-thing-dweetio-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove alert for a LOCKED <em>thing</em> <a href="https://dweet.io">Dweet.io API</a>
+</h3>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> (
+    <span class="pl-s1"><span class="pl-pds">"</span>fmt<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>github.com/vitorleal/go-dweetio<span class="pl-pds">"</span></span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+    <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">SetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>vitorleal1@gmail.com<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>if(dweet.alertValue &gt; 10) return 'TEST: Greater than 10'; if(dweet.alertValue &lt; 10) return 'TEST: Less than 10';<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+
+    <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
+        t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
+        fmt.<span class="pl-s3">Println</span>(err.<span class="pl-s3">Error</span>())
+    }
+
+    fmt.<span class="pl-s3">Println</span>(res)
+}</pre></div>
+
+<h2>
+<a id="autor" class="anchor" href="#autor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Autor</h2>
+
+<table>
+<thead>
+<tr>
+<th><a href="http://twitter.com/vitorleal" title="Follow @vitorleal on Twitter"><img src="http://gravatar.com/avatar/e133221d7fbc0dee159dca127d2f6f00?s=80" alt="twitter/vitorleal"></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://vitorleal.com">Vitor Leal</a></td>
+</tr>
+</tbody>
+</table>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/vitorleal/go-dweetio/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/vitorleal/go-dweetio/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/vitorleal/go-dweetio"></a> is maintained by <a href="https://github.com/vitorleal">vitorleal</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
