@@ -7,7 +7,7 @@ Go-dweetio is a simple Go client for [dweet.io](https://dweet.io/) API
 $ go get github.com/vitorleal/go-dweetio
 ```
 
-##API Support
+##API Support [Dweet.io API](https://dweet.io)
 * Get last dweet for a **thing**
 * Get last dweet for a LOCKED **thing**
 * Get all dweets for a **thing**
