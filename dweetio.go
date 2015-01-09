@@ -3,6 +3,7 @@ package dweetio
 import (
 	"net/http"
 	"strings"
+	"time"
 )
 
 //Return the current implementation version
@@ -15,15 +16,38 @@ type Dweetio struct {
 	Key string
 }
 
+//Dynamic JSON struct
+type JSON struct {
+	Thing   string
+	Created time.Time
+	Content interface{}
+}
+
+//Dweets struct
+type Base struct {
+	This string
+	By   string
+	The  string
+}
+
+type Dweets struct {
+	Base
+	With []JSON
+}
+
+//Post Dweet return
+type Dweet struct {
+	Base
+	With JSON
+}
+
 //GET last dweet for a Thing
-func (api *Dweetio) GetLastDweetFor(thing string) (dweets interface{}, err error) {
+func (api *Dweetio) GetLastDweetFor(thing string) (dweets *Dweets, err error) {
+
 	uri := api.GetUri("/get/latest/dweet/for/", thing)
 	res, err := http.Get(uri)
 
-	//If error
-	api.ReturnError(err)
-
-	dweets, err = api.ReadData(res)
+	err = api.ReadData(res, &dweets)
 
 	//If error
 	api.ReturnError(err)
@@ -32,15 +56,12 @@ func (api *Dweetio) GetLastDweetFor(thing string) (dweets interface{}, err error
 }
 
 //GET all dweet for a Thing
-func (api *Dweetio) GetDweetsFor(thing string) (dweets interface{}, err error) {
+func (api *Dweetio) GetDweetsFor(thing string) (dweets *Dweets, err error) {
 	uri := api.GetUri("/get/dweets/for/", thing)
 
 	res, err := http.Get(uri)
 
-	//If error
-	api.ReturnError(err)
-
-	dweets, err = api.ReadData(res)
+	err = api.ReadData(res, &dweets)
 
 	//If error
 	api.ReturnError(err)
@@ -49,7 +70,7 @@ func (api *Dweetio) GetDweetsFor(thing string) (dweets interface{}, err error) {
 }
 
 //POST data to a Thing
-func (api *Dweetio) DweetFor(thing string, data string) (dweet interface{}, err error) {
+func (api *Dweetio) DweetFor(thing string, data string) (dweet *Dweet, err error) {
 	uri := api.GetUri("/dweet/for/", thing)
 	json := strings.NewReader(data)
 
@@ -58,7 +79,7 @@ func (api *Dweetio) DweetFor(thing string, data string) (dweet interface{}, err 
 	//If error
 	api.ReturnError(err)
 
-	dweet, err = api.ReadData(res)
+	err = api.ReadData(res, &dweet)
 
 	return dweet, nil
 }

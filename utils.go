@@ -14,7 +14,7 @@ const (
 )
 
 //Read data from request body
-func (api *Dweetio) ReadData(res *http.Response) (dweets interface{}, err error) {
+func (api *Dweetio) ReadData(res *http.Response, dweets interface{}) (err error) {
 	//Read the response body
 	body, err := ioutil.ReadAll(res.Body)
 
@@ -24,12 +24,12 @@ func (api *Dweetio) ReadData(res *http.Response) (dweets interface{}, err error)
 	defer res.Body.Close()
 
 	//Unmarshal the request body
-	err = json.Unmarshal(body, &dweets)
+	err = json.Unmarshal(body, dweets)
 
 	//If error
 	api.ReturnError(err)
 
-	return dweets, nil
+	return nil
 }
 
 //Return error
