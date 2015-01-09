@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 const (
@@ -54,9 +55,9 @@ func (api *Dweetio) GetUri(uri string, thing string) (dweetUri string) {
 }
 
 //Return the dweetio alert uri with the lock key if is set
-func (api *Dweetio) GetAlertUri(recipients string, thing string, condition string) (dweetUri string) {
+func (api *Dweetio) GetAlertUri(recipients []string, thing string, condition string) (dweetUri string) {
 	conditionEncoded := url.QueryEscape(condition)
-	dweetUri = fmt.Sprintf("%s/alert/%s/when/%s/%s", BaseUri, recipients, thing, conditionEncoded)
+	dweetUri = fmt.Sprintf("%s/alert/%s/when/%s/%s", BaseUri, strings.Join(recipients, ","), thing, conditionEncoded)
 
 	if api.Key != "" {
 		params := url.Values{}

@@ -43,7 +43,7 @@ func TestRemoveAlertFor(t *testing.T) {
 
 func TestRemoveAlertForLocked(t *testing.T) {
 	api := Dweetio{Key: "myLockKey"}
-	res, err := api.SetAlertFor("godweetio", "vitorleal1@gmail.com", "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
+	res, err := api.SetAlertFor("godweetio", []string{"vitorleal1@gmail.com"}, "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
 
 	if err != nil {
 		t.Error("Error in the DweetsFor")
@@ -56,7 +56,7 @@ func TestRemoveAlertForLocked(t *testing.T) {
 //Set Alert
 func TestSetAlertFor(t *testing.T) {
 	api := Dweetio{}
-	_, err := api.SetAlertFor("godweetio", "vitorleal1@gmail.com", "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
+	_, err := api.SetAlertFor("godweetio", []string{"vitorleal1@gmail.com"}, "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
 
 	if err == nil {
 		t.Error("Error in the DweetsFor")

@@ -21,7 +21,7 @@ func TestGetUri(t *testing.T) {
 
 func TestGetAlertUri(t *testing.T) {
 	api := Dweetio{}
-	uri := api.GetAlertUri("vitorleal1@gmail.com", "godweetio", "if(dweet.temp <= 32) return \"frozen\";")
+	uri := api.GetAlertUri([]string{"vitorleal1@gmail.com"}, "godweetio", "if(dweet.temp <= 32) return \"frozen\";")
 
 	fmt.Println(uri)
 
