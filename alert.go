@@ -48,7 +48,7 @@ func (api *Dweetio) RemoveAlertFor(thing string) (dweets interface{}, err error)
 }
 
 //CREATE alert for a Thing
-func (api *Dweetio) SetAlertFor(thing string, recipients string, condition string) (dweet interface{}, err error) {
+func (api *Dweetio) SetAlertFor(thing string, recipients []string, condition string) (dweet interface{}, err error) {
 	if api.Key == "" {
 		return nil, fmt.Errorf("You need a LOCKED thing to create alerts")
 	}
