@@ -45,7 +45,7 @@ func Version() string {
 	return "0.1.0"
 }
 
-//Dweetio struct
+//DweetIO struct
 type Dweetio struct {
 	Key string
 }
@@ -57,19 +57,20 @@ type JSON struct {
 	Content interface{}
 }
 
-//Dweets struct
+//Base Dweet struct
 type Base struct {
 	This string
 	By   string
 	The  string
 }
 
+//Miltiple Dweets struct
 type Dweets struct {
 	Base
 	With []JSON
 }
 
-//Post Dweet return
+//Single Dweet struct
 type Dweet struct {
 	Base
 	With JSON
