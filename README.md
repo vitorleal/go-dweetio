@@ -160,7 +160,7 @@ func main() {
 	//First parmeter thing (name of your thing)
 	//Second parmeter recipients (a list of strings)
 	//Third parmeter condition (A simple javascript expression to evaluate the data in a dweet and to return whether or not an alert should be sent)
-	res, err := api.SetAlertFor("godweetio", []string{"test@godweetio.com"}, "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
+	res, err := api.SetAlertFor("godweetio", []string{"test@godweetio.com"}, "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';")
 
 	if err != nil {
 		t.Error("Error in the DweetsFor")
@@ -181,7 +181,7 @@ import (
 
 func main() {
 	api := Dweetio{Key: "myLockKey"}
-	res, err := api.GetAlertFor("godweetio") // Note: doesn't hit network
+	res, err := api.GetAlertFor("godweetio")
 
 	if err != nil {
 		t.Error("Error in the GetAlertFor")
@@ -202,7 +202,7 @@ import (
 
 func main() {
 	api := Dweetio{Key: "myLockKey"}
-	res, err := api.SetAlertFor("godweetio", "vitorleal1@gmail.com", "if(dweet.alertValue > 10) return 'TEST: Greater than 10'; if(dweet.alertValue < 10) return 'TEST: Less than 10';") // Note: doesn't hit network
+	res, err := api.RemoveAlertFor("godweetio")
 
 	if err != nil {
 		t.Error("Error in the DweetsFor")
@@ -218,4 +218,5 @@ func main() {
 |[![twitter/vitorleal](http://gravatar.com/avatar/e133221d7fbc0dee159dca127d2f6f00?s=80)](http://twitter.com/vitorleal "Follow @vitorleal on Twitter")|
 |---|
 |[Vitor Leal](http://vitorleal.com)|
+
 
