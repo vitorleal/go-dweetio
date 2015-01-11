@@ -39,7 +39,7 @@
         </div>
 
         <h1>
-<a id="go-dweetio-" class="anchor" href="#go-dweetio-" aria-hidden="true"><span class="octicon octicon-link"></span></a>GO Dweet.io <a href="https://travis-ci.org/vitorleal/go-dweetio"><img src="https://travis-ci.org/vitorleal/go-dweetio.svg" alt="Build Status"></a>
+<a id="go-dweetio--" class="anchor" href="#go-dweetio--" aria-hidden="true"><span class="octicon octicon-link"></span></a>GO Dweet.io <a href="https://travis-ci.org/vitorleal/go-dweetio"><img src="https://travis-ci.org/vitorleal/go-dweetio.svg" alt="Build Status"></a> <a href="https://godoc.org/github.com/vitorleal/go-dweetio"><img src="https://godoc.org/github.com/vitorleal/go-dweetio?status.png" alt="GoDoc"></a>
 </h1>
 
 <p>Go-dweetio is a simple Go client for <a href="https://dweet.io/">dweet.io</a> API</p>
@@ -219,9 +219,9 @@
 <span class="pl-k">func</span> <span class="pl-en">main</span>() {
     <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
     <span class="pl-c">//First parmeter thing (name of your thing)</span>
-    <span class="pl-c">//Second parmeter recipients (emails that will be notifyed separated by comma)</span>
+    <span class="pl-c">//Second parmeter recipients (a list of strings)</span>
     <span class="pl-c">//Third parmeter condition (A simple javascript expression to evaluate the data in a dweet and to return whether or not an alert should be sent)</span>
-    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">SetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>vitorleal1@gmail.com<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>if(dweet.alertValue &gt; 10) return 'TEST: Greater than 10'; if(dweet.alertValue &lt; 10) return 'TEST: Less than 10';<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">SetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, []<span class="pl-st">string</span>{<span class="pl-s1"><span class="pl-pds">"</span>test@godweetio.com<span class="pl-pds">"</span></span>}, <span class="pl-s1"><span class="pl-pds">"</span>if(dweet.alertValue &gt; 10) return 'TEST: Greater than 10'; if(dweet.alertValue &lt; 10) return 'TEST: Less than 10';<span class="pl-pds">"</span></span>)
 
     <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
         t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
@@ -242,7 +242,7 @@
 
 <span class="pl-k">func</span> <span class="pl-en">main</span>() {
     <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
-    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">GetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>)
 
     <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
         t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the GetAlertFor<span class="pl-pds">"</span></span>)
@@ -263,7 +263,7 @@
 
 <span class="pl-k">func</span> <span class="pl-en">main</span>() {
     <span class="pl-vo">api</span> <span class="pl-k">:=</span> Dweetio{Key: <span class="pl-s1"><span class="pl-pds">"</span>myLockKey<span class="pl-pds">"</span></span>}
-    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">SetAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>vitorleal1@gmail.com<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>if(dweet.alertValue &gt; 10) return 'TEST: Greater than 10'; if(dweet.alertValue &lt; 10) return 'TEST: Less than 10';<span class="pl-pds">"</span></span>) <span class="pl-c">// Note: doesn't hit network</span>
+    <span class="pl-vo">res</span>, <span class="pl-vo">err</span> <span class="pl-k">:=</span> api.<span class="pl-s3">RemoveAlertFor</span>(<span class="pl-s1"><span class="pl-pds">"</span>godweetio<span class="pl-pds">"</span></span>)
 
     <span class="pl-k">if</span> err != <span class="pl-c1">nil</span> {
         t.<span class="pl-s3">Error</span>(<span class="pl-s1"><span class="pl-pds">"</span>Error in the DweetsFor<span class="pl-pds">"</span></span>)
@@ -274,7 +274,7 @@
 }</pre></div>
 
 <h2>
-<a id="autor" class="anchor" href="#autor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Autor</h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
 
 <table>
 <thead>
