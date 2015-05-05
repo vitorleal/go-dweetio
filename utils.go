@@ -67,3 +67,4 @@ func (api *Dweetio) GetAlertUri(recipients []string, thing string, condition str
 
 	return dweetUri
 }
+

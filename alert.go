@@ -64,3 +64,4 @@ func (api *Dweetio) SetAlertFor(thing string, recipients []string, condition str
 
 	return dweets, nil
 }
+
