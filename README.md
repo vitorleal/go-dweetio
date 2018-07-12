@@ -1,13 +1,13 @@
-#GO Dweet.io [![Build Status](https://travis-ci.org/vitorleal/go-dweetio.svg)](https://travis-ci.org/vitorleal/go-dweetio) [![GoDoc](https://godoc.org/github.com/vitorleal/go-dweetio?status.png)](https://godoc.org/github.com/vitorleal/go-dweetio)
+# GO Dweet.io [![Build Status](https://travis-ci.org/vitorleal/go-dweetio.svg)](https://travis-ci.org/vitorleal/go-dweetio) [![GoDoc](https://godoc.org/github.com/vitorleal/go-dweetio?status.png)](https://godoc.org/github.com/vitorleal/go-dweetio)
 Go-dweetio is a simple Go client for [dweet.io](https://dweet.io/) API
 
 
-##Instaling
+## Instaling
 ```
 $ go get github.com/vitorleal/go-dweetio
 ```
 
-##API Support [Dweet.io API](https://dweet.io)
+## API Support [Dweet.io API](https://dweet.io)
 * Get last dweet for a **thing**
 * Get last dweet for a LOCKED **thing**
 * Get all dweets for a **thing**
@@ -20,9 +20,9 @@ $ go get github.com/vitorleal/go-dweetio
 * **TODO**: Real-time Streams for a **thing**
 
 
-##Using
+## Using
 
-###GET last dweet for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
+### GET last dweet for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -43,7 +43,7 @@ func main() {
 ```
 
 
-###GET last dweet for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
+### GET last dweet for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -64,7 +64,7 @@ func main() {
 ```
 
 
-###GET all dweet for a *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
+### GET all dweet for a *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -85,7 +85,7 @@ func main() {
 ```
 
 
-###GET all dweet for a LOCKED *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
+### GET all dweet for a LOCKED *thing* - limited to 500 in the [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -106,7 +106,7 @@ func main() {
 ```
 
 
-###POST a new data for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
+### POST a new data for a *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -127,7 +127,7 @@ func main() {
 ```
 
 
-###POST a new data for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
+### POST a new data for a LOCKED *thing* [Dweet.io API](https://dweet.io/play/#!/dweets)
 ```go
 import (
 	"fmt"
@@ -148,7 +148,7 @@ func main() {
 ```
 
 
-###Set alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
+### Set alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
 ```go
 import (
 	"fmt"
@@ -172,7 +172,7 @@ func main() {
 ```
 
 
-###Get alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
+### Get alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
 ```go
 import (
 	"fmt"
@@ -193,7 +193,7 @@ func main() {
 ```
 
 
-###Remove alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
+### Remove alert for a LOCKED *thing* [Dweet.io API](https://dweet.io)
 ```go
 import (
 	"fmt"
@@ -214,9 +214,7 @@ func main() {
 ```
 
 
-##Author
+## Author
 |[![twitter/vitorleal](http://gravatar.com/avatar/e133221d7fbc0dee159dca127d2f6f00?s=80)](http://twitter.com/vitorleal "Follow @vitorleal on Twitter")|
 |---|
 |[Vitor Leal](http://vitorleal.com)|
-
-
